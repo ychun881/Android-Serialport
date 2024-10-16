@@ -70,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
         recy = findViewById(R.id.recyclerView);
         spSerial = findViewById(R.id.sp_serial);
         edInput = findViewById(R.id.ed_input);
+//        String command = "01050001FF00DDFA";
+        String command ="010100010001AC0A";
+        edInput.setText(command);
         btSend = findViewById(R.id.btn_send);
         spBote = findViewById(R.id.sp_baudrate);
         btOpen = findViewById(R.id.btn_open);
@@ -113,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         };
 
         final String[] ports = serialPortFinder.getAllDevicesPath();
-        final String[] botes = new String[]{"0", "50", "75", "110", "134", "150", "200", "300", "600", "1200", "1800", "2400", "4800", "9600", "19200", "38400", "57600", "115200", "230400", "460800", "500000", "576000", "921600", "1000000", "1152000", "1500000", "2000000", "2500000", "3000000", "3500000", "4000000", "CUSTOM"};
+        final String[] botes = new String[]{"9600", "19200"};
         final String[] databits = new String[]{"8", "7", "6", "5"};
         final String[] paritys = new String[]{"NONE", "ODD", "EVEN", "SPACE", "MARK"};
         final String[] stopbits = new String[]{"1", "2"};
@@ -141,6 +144,8 @@ public class MainActivity extends AppCompatActivity {
         SpAdapter spAdapter2 = new SpAdapter(this);
         spAdapter2.setDatas(botes);
         spBote.setAdapter(spAdapter2);
+
+        spBote.setSelection(0);
 
         spBote.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
